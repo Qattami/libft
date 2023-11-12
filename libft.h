@@ -6,7 +6,7 @@
 /*   By: iqattami <iqattami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 08:34:11 by iqattami          #+#    #+#             */
-/*   Updated: 2023/11/10 21:56:22 by iqattami         ###   ########.fr       */
+/*   Updated: 2023/11/12 16:40:43 by iqattami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 #include <unistd.h>
+# include <limits.h>
 
 int main(void);
 char				*ft_strcat(char *dest, char *src);
@@ -50,6 +51,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char *ft_itoa(int n);
+void	ft_putnbr_fd(int n, int fd);
+void ft_putchar_fd(char c, int fd);
+void ft_putstr_fd(char *s, int fd);
+void ft_putendl_fd(char *s, int fd);
+void ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 
 typedef struct s_list
