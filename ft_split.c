@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iqattami <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: iqattami <iqattami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:54:35 by iqattami          #+#    #+#             */
-/*   Updated: 2023/11/08 23:15:35 by iqattami         ###   ########.fr       */
+/*   Updated: 2023/11/16 05:18:11 by iqattami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	*malloc_word(char const *str, int i, char charset)
 	tab[j] = '\0';
 	return (tab);
 }
+
 
 char	**ft_split(char const *str, char charset)
 {

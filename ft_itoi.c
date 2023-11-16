@@ -1,71 +1,72 @@
-#include<stdlib.h>
+#include "libft.h"
 
-int lenght(int n)
+int length(long n)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while(n > 0)
-	{
-		n = n / 10;
-		i++;
-	}
-	return i;
+    i = 0;
+    if(n < 0)
+    {
+        i++;
+        n =-n;
+    }
+    while(n > 0)
+    {
+        n = n / 10;
+        i++;
+    }
+    return i;
+}
+char *rslt(char *r)
+{
+    r[0] = '0';
+    return (r);
+}
+int signe(int n)
+{
+    if(n < 0)
+        return (1);
+    else
+        return (0);
 }
 char *ft_itoa(int n)
 {
-	int character;
-	int sg;
-	char *str;
-	int i;
+    int len;
+    long long nbr;
+    char *r;
+    int i;
 
-	character = 0;
-	sg = 1;
-	i = 0;
+    len = length(n);
+    nbr = (long long)n;
+    i = signe(n);
+    r = malloc(sizeof(char) * (len + 1));
+    if(!r)
+        return (NULL);
+    r[len] = 0;
+    if(nbr == 0)
+        return (rslt(r));
+    if(nbr < 0)
+    {
+        nbr = -nbr;
+        r[0] = '-';
+    }
 
-	if(n < 0)
-	{
-		character++;
-		sg = sg * -1;
-	}
-	character = lenght(n);
-	if(!(str = malloc(sizeof(char) * (character + 1))))
-		return NULL;
-	if(sg < 0)
-	{
-		str[i] = '-';
-		i++;
-	}
-	while(i < character)
-	{
-		str[i] = n % 10 + '0';
-		n = n / 10;
-		i++;
-	}
-	str[i] = '\0';
-	return str;
+    while(i < len)
+    {
+        r[--len] = (nbr % 10) + '0';
+        nbr/= 10;
+    }
+    return (r);
 }
-
-// #include <stdio.h>
 
 // int main()
 // {
-//     int n1 = 123;
-//     int n2 = -456;
-//     int n3 = 0;
-
-//     char *str1 = ft_itoa(n1);
-//     char *str2 = ft_itoa(n2);
-//     char *str3 = ft_itoa(n3);
-
-//     printf("%d -> %s\n", n1, str1);
-//     printf("%d -> %s\n", n2, str2);
-//     printf("%d -> %s\n", n3, str3);
-
-//     free(str1);
+//     int n2 = INT_MAX;
+// 	// printf("lengh: %d\n", length(n2));
+// 	// printf("send: %d\n", n2);
+// 	// // -2147483647 
+//     char *str2 = ft_itoa(0);
+//     printf("%s\n", str2);
 //     free(str2);
-//     free(str3);
-
 //     return 0;
-// }
-	
+// };

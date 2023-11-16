@@ -6,7 +6,7 @@
 /*   By: iqattami <iqattami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:07:31 by iqattami          #+#    #+#             */
-/*   Updated: 2023/11/05 20:08:12 by iqattami         ###   ########.fr       */
+/*   Updated: 2023/11/16 01:21:36 by iqattami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	d = dest;
 	s = src;
 	i = 0;
-	if (!s || !d)
+	if (!d)
 		return (NULL);
+	if(!s)
+	return (dest);
 	while (i < n)
 	{
 		d[i] = s[i];
