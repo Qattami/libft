@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iqattami <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: iqattami <iqattami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:38:10 by iqattami          #+#    #+#             */
-/*   Updated: 2023/11/05 16:35:02 by iqattami         ###   ########.fr       */
+/*   Updated: 2023/11/19 00:28:43 by iqattami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
 
 int	ft_atoi(const char *str)
 {
 	int	sg;
-	int	r;
+	long long	r;
 	int	i;
 
 	sg = 1;
@@ -28,11 +28,7 @@ int	ft_atoi(const char *str)
 			sg = -1;
 		i++;
 	}
-	
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
-	{
-		r = r * 10 + (str[i] - '0');
-		i++;
-	}
+		r = r * 10 + (str[i++] - '0');
 	return (r * sg);
 }
