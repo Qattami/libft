@@ -6,7 +6,7 @@
 /*   By: iqattami <iqattami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:12:49 by iqattami          #+#    #+#             */
-/*   Updated: 2023/11/08 21:02:43 by iqattami         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:45:43 by iqattami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	dest1 = (unsigned char *)dest;
 	src1 = (const unsigned char *)src;
-	if (!src)
-		return (NULL);
 	if (dest1 <= src1)
 		ft_memcpy(dest1, src1, n);
 	else
@@ -35,4 +33,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest1);
 }
-

@@ -12,14 +12,7 @@
 
 #include "libft.h"
 
-int	check_separator(char c, char s)
-{
-	if (s == c)
-		return (1);
-	return (0);
-}
-
-int	count_word(char const *str, char charset)
+static int	count_word(char const *str, char charset)
 {
 	int	i;
 	int	count;
@@ -28,17 +21,17 @@ int	count_word(char const *str, char charset)
 	count = 0;
 	while (str[i])
 	{
-		while (str[i] && check_separator(str[i], charset))
+		while (str[i] && str[i] == charset)
 			i++;
 		if (str[i])
 			count++;
-		while (str[i] && !check_separator(str[i], charset))
+		while (str[i] && str[i] != charset)
 			i++;
 	}
 	return (count);
 }
 
-char	*malloc_word(char const *str, int i, char charset)
+static char	*malloc_word(char const *str, int i, char charset)
 {
 	int		j;
 	char	*tab;
@@ -46,7 +39,7 @@ char	*malloc_word(char const *str, int i, char charset)
 
 	len = 0;
 	j = i;
-	while (str[j] && !check_separator(str[j], charset))
+	while (str[j] && str[j] != charset)
 	{
 		j++;
 		len++;
@@ -65,30 +58,54 @@ char	*malloc_word(char const *str, int i, char charset)
 	return (tab);
 }
 
-
-char	**ft_split(char const *str, char charset)
+static char	**free_split(char **str, int j)
 {
-	char	**tab;
-	int		i;
-	int		j;
+	int	i;
+
+	i = 0;
+	while (i < j)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	return (NULL);
+}
+
+static char	**sub_split(char const *str, char charset, char **tab)
+{
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	tab = (char **)malloc(sizeof(char *) * (count_word(str, charset) + 1));
-	if (!tab)
-		return (NULL);
 	while (str[i])
 	{
-		while (str[i] && check_separator(str[i], charset))
+		while (str[i] && str[i] == charset)
 			i++;
 		if (str[i])
 		{
 			tab[j] = malloc_word(str, i, charset);
+			if (tab[j] == NULL)
+				return (free_split(tab, j));
 			j++;
 		}
-		while (str[i] && !check_separator(str[i], charset))
+		while (str[i] && str[i] != charset)
 			i++;
 	}
 	tab[j] = 0;
+	return (tab);
+}
+
+char	**ft_split(char const *str, char charset)
+{
+	char	**tab;
+
+	if (str == NULL)
+		return (NULL);
+	tab = (char **)malloc(sizeof(char *) * (count_word(str, charset) + 1));
+	if (!tab)
+		return (NULL);
+	tab = sub_split(str, charset, tab);
 	return (tab);
 }

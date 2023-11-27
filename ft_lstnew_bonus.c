@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;
@@ -32,5 +33,5 @@ t_list	*ft_lstnew(void *content)
 // 	free(c);
 // 	printf("%d",*((int*)node->content));
 
-// 	return 0;
+// 	return (0);
 // }

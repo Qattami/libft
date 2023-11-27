@@ -10,21 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 #include <stdint.h>
+
 void	*ft_calloc(size_t nitems, size_t size)
 {
 	void	*tab;
-	
-	if(nitems == SIZE_MAX || size == SIZE_MAX || nitems > SIZE_MAX / size)
+
+	if (size && nitems > SIZE_MAX / size)
 		return (NULL);
-	
 	tab = malloc(size * nitems);
 	if (tab == NULL)
-	{
 		return (NULL);
-	}
-	ft_memset(tab, 0, size * nitems);
+	ft_bzero(tab, size * nitems);
 	return (tab);
 }
